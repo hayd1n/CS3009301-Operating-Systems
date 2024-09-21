@@ -18,10 +18,9 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "scheduler.h"
-
 #include "copyright.h"
 #include "debug.h"
+#include "scheduler.h"
 #include "main.h"
 
 //----------------------------------------------------------------------
@@ -98,7 +97,7 @@ void Scheduler::Run(Thread *nextThread, bool finishing) {
     Thread *oldThread = kernel->currentThread;
 
     //	cout << "Current Thread" <<oldThread->getName() << "    Next
-    // Thread"<<nextThread->getName()<<endl;
+    //Thread"<<nextThread->getName()<<endl;
 
     ASSERT(kernel->interrupt->getLevel() == IntOff);
 

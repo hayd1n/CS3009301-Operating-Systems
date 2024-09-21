@@ -12,8 +12,8 @@
 #ifndef USERKERNEL_H
 #define USERKERNEL_H
 
-#include "filesys.h"
 #include "kernel.h"
+#include "filesys.h"
 #include "machine.h"
 #include "synchdisk.h"
 class SynchDisk;

@@ -24,11 +24,11 @@
 #include "copyright.h"
 #undef MAIN
 
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
 #include "coff.h"
 #include "noff.h"

@@ -35,9 +35,9 @@
 #ifndef INTERRUPT_H
 #define INTERRUPT_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "list.h"
+#include "callback.h"
 
 // Interrupts can be disabled (IntOff) or enabled (IntOn)
 enum IntStatus { IntOff, IntOn };

@@ -5,8 +5,8 @@
  */
 
 #include "copyright.h"
-#include "encode.h"
 #include "instr.h"
+#include "encode.h"
 
 #define NULL 0
 

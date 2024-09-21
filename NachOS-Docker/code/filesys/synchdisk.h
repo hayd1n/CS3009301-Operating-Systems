@@ -9,10 +9,10 @@
 #ifndef SYNCHDISK_H
 #define SYNCHDISK_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "disk.h"
 #include "synch.h"
+#include "callback.h"
 
 // The following class defines a "synchronous" disk abstraction.
 // As with other I/O devices, the raw physical disk is an asynchronous device --

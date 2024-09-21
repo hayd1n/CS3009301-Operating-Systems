@@ -11,3 +11,4 @@ NamespaceIndentation: All
 FixNamespaceComments: false
 SpacesInConditionalStatement: true
 ColumnLimit: 100
+SortIncludes: false

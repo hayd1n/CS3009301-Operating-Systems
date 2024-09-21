@@ -9,9 +9,8 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "synchlist.h"
-
 #include "copyright.h"
+#include "synchlist.h"
 
 //----------------------------------------------------------------------
 // SynchList<T>::SynchList

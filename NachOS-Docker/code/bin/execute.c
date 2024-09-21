@@ -4,11 +4,11 @@
  of liability and disclaimer of warranty provisions.
  */
 
-#include <stdio.h>
-
 #include "copyright.h"
-#include "encode.h"
+
+#include <stdio.h>
 #include "instr.h"
+#include "encode.h"
 #include "int.h"
 
 #define FAST 0

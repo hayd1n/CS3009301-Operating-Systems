@@ -5,17 +5,16 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "kernel.h"
-
 #include "copyright.h"
 #include "debug.h"
-#include "elevatortest.h"
-#include "libtest.h"
 #include "main.h"
-#include "string.h"
+#include "kernel.h"
+#include "sysdep.h"
 #include "synch.h"
 #include "synchlist.h"
-#include "sysdep.h"
+#include "libtest.h"
+#include "elevatortest.h"
+#include "string.h"
 
 //----------------------------------------------------------------------
 // ThreadedKernel::ThreadedKernel

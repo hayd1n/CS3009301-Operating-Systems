@@ -18,10 +18,10 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
-#include "callback.h"
 #include "copyright.h"
-#include "list.h"
 #include "utility.h"
+#include "callback.h"
+#include "list.h"
 
 // which direction the elevator or rider is going
 enum Direction { Down, Up, Neither };

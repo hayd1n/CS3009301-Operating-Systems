@@ -7,10 +7,9 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "stats.h"
-
 #include "copyright.h"
 #include "debug.h"
+#include "stats.h"
 
 //----------------------------------------------------------------------
 // Statistics::Statistics

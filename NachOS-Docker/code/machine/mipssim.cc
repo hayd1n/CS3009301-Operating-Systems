@@ -10,11 +10,11 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "mipssim.h"
-
 #include "copyright.h"
+
 #include "debug.h"
 #include "machine.h"
+#include "mipssim.h"
 #include "main.h"
 
 static void Mult(int a, int b, bool signedArith, int *hiPtr, int *loPtr);

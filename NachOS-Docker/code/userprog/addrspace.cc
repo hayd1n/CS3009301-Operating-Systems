@@ -15,11 +15,10 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "addrspace.h"
-
 #include "copyright.h"
-#include "machine.h"
 #include "main.h"
+#include "addrspace.h"
+#include "machine.h"
 #include "noff.h"
 
 //----------------------------------------------------------------------

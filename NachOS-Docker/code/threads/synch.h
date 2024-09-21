@@ -18,9 +18,9 @@
 #define SYNCH_H
 
 #include "copyright.h"
+#include "thread.h"
 #include "list.h"
 #include "main.h"
-#include "thread.h"
 
 // The following class defines a "semaphore" whose value is a non-negative
 // integer.  The semaphore has only two operations P() and V():

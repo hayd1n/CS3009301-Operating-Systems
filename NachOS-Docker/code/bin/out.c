@@ -19,12 +19,12 @@
  *    For code, disassemble and give relocation information
  */
 
-#include <aouthdr.h>
 #include <filehdr.h>
-#include <reloc.h>
+#include <aouthdr.h>
 #include <scnhdr.h>
-#include <stdio.h>
+#include <reloc.h>
 #include <syms.h>
+#include <stdio.h>
 
 #define read_struct(f, s) (fread(&s, sizeof(s), 1, f) == 1)
 

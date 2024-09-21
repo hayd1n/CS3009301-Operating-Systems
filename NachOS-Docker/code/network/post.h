@@ -26,12 +26,12 @@
 #ifndef POST_H
 #define POST_H
 
-#include "callback.h"
 #include "copyright.h"
-#include "network.h"
-#include "synch.h"
-#include "synchlist.h"
 #include "utility.h"
+#include "callback.h"
+#include "network.h"
+#include "synchlist.h"
+#include "synch.h"
 
 // Mailbox address -- uniquely identifies a mailbox on a given machine.
 // A mailbox is just a place for temporary storage for messages.

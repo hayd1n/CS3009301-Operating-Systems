@@ -15,9 +15,9 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "utility.h"
+#include "callback.h"
 
 // Network address -- uniquely identifies a machine.  This machine's ID
 //  is given on the command line.

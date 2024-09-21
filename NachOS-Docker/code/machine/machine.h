@@ -22,8 +22,8 @@
 #define MACHINE_H
 
 #include "copyright.h"
-#include "translate.h"
 #include "utility.h"
+#include "translate.h"
 
 // Definitions related to the size, and format of user memory
 

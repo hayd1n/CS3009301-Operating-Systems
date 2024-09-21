@@ -17,9 +17,9 @@
 #ifndef DISK_H
 #define DISK_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "utility.h"
+#include "callback.h"
 
 // The following class defines a physical disk I/O device.  The disk
 // has a single surface, split up into "tracks", and each track split

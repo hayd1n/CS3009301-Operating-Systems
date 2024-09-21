@@ -9,9 +9,8 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "netkernel.h"
-
 #include "copyright.h"
+#include "netkernel.h"
 #include "post.h"
 
 //----------------------------------------------------------------------

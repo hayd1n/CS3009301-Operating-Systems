@@ -6,12 +6,11 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "libtest.h"
-
-#include "bitmap.h"
 #include "copyright.h"
-#include "hash.h"
+#include "libtest.h"
+#include "bitmap.h"
 #include "list.h"
+#include "hash.h"
 #include "sysdep.h"
 
 //----------------------------------------------------------------------

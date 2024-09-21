@@ -38,12 +38,12 @@
 #define THREAD_H
 
 #include "copyright.h"
-#include "sysdep.h"
 #include "utility.h"
+#include "sysdep.h"
 
 #ifdef USER_PROGRAM
-#include "addrspace.h"
 #include "machine.h"
+#include "addrspace.h"
 #endif
 
 // CPU register state to be saved on context switch.

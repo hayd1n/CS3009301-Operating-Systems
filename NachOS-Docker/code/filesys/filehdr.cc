@@ -22,11 +22,10 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "filehdr.h"
-
 #include "copyright.h"
 #include "debug.h"
 #include "main.h"
+#include "filehdr.h"
 
 //----------------------------------------------------------------------
 // FileHeader::Allocate

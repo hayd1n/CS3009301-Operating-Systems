@@ -11,11 +11,11 @@
 #ifndef SYNCHCONSOLE_H
 #define SYNCHCONSOLE_H
 
+#include "copyright.h"
+#include "utility.h"
 #include "callback.h"
 #include "console.h"
-#include "copyright.h"
 #include "synch.h"
-#include "utility.h"
 
 // The following two classes define synchronized input and output to
 // a console device

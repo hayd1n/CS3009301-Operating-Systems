@@ -8,12 +8,11 @@
 
 /* MIPS instruction disassembler */
 
-#include <filehdr.h>
-#include <ldfcn.h>
-#include <scnhdr.h>
 #include <stdio.h>
+#include <filehdr.h>
+#include <scnhdr.h>
 #include <syms.h>
-
+#include <ldfcn.h>
 #include "int.h"
 
 static FILE *fp;

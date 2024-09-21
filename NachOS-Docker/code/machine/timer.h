@@ -20,9 +20,9 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "utility.h"
+#include "callback.h"
 
 // The following class defines a hardware timer.
 class Timer : public CallBackObj {

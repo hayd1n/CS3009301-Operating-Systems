@@ -8,9 +8,8 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "alarm.h"
-
 #include "copyright.h"
+#include "alarm.h"
 #include "main.h"
 
 //----------------------------------------------------------------------

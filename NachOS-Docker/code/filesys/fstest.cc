@@ -14,12 +14,12 @@
 
 #include "copyright.h"
 #include "debug.h"
-#include "disk.h"
+#include "utility.h"
 #include "filesys.h"
 #include "main.h"
-#include "stats.h"
 #include "thread.h"
-#include "utility.h"
+#include "disk.h"
+#include "stats.h"
 
 #define TransferSize 10  // make it small, just to be difficult
 

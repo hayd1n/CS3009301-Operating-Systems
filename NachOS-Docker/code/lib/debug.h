@@ -14,8 +14,8 @@
 #define DEBUG_H
 
 #include "copyright.h"
-#include "sysdep.h"
 #include "utility.h"
+#include "sysdep.h"
 
 // The pre-defined debugging flags are:
 

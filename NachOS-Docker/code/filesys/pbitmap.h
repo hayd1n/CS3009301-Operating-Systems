@@ -9,8 +9,8 @@
 #ifndef PBITMAP_H
 #define PBITMAP_H
 
-#include "bitmap.h"
 #include "copyright.h"
+#include "bitmap.h"
 #include "openfile.h"
 
 // The following class defines a persistent bitmap.  It inherits all

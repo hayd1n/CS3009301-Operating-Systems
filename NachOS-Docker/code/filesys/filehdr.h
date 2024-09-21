@@ -14,8 +14,8 @@
 #ifndef FILEHDR_H
 #define FILEHDR_H
 
-#include "bitmap.h"
 #include "disk.h"
+#include "bitmap.h"
 
 #define NumDirect ((SectorSize - 2 * sizeof(int)) / sizeof(int))
 #define MaxFileSize (NumDirect * SectorSize)

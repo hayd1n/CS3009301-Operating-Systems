@@ -8,14 +8,14 @@
 #ifndef KERNEL_H
 #define KERNEL_H
 
-#include "alarm.h"
 #include "copyright.h"
 #include "debug.h"
-#include "interrupt.h"
-#include "scheduler.h"
-#include "stats.h"
-#include "thread.h"
 #include "utility.h"
+#include "thread.h"
+#include "scheduler.h"
+#include "interrupt.h"
+#include "stats.h"
+#include "alarm.h"
 
 class ThreadedKernel {
 public:

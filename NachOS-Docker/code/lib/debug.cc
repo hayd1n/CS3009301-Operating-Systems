@@ -6,11 +6,10 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "debug.h"
-
 #include "copyright.h"
-#include "string.h"
 #include "utility.h"
+#include "debug.h"
+#include "string.h"
 
 //----------------------------------------------------------------------
 // Debug::Debug

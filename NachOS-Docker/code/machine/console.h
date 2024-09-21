@@ -27,9 +27,9 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-#include "callback.h"
 #include "copyright.h"
 #include "utility.h"
+#include "callback.h"
 
 // The following two classes define the input (and output) side of a
 // hardware console device.  Input (and output) to the device is simulated

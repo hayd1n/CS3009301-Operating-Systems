@@ -13,10 +13,9 @@
 #ifndef ADDRSPACE_H
 #define ADDRSPACE_H
 
-#include <string.h>
-
 #include "copyright.h"
 #include "filesys.h"
+#include <string.h>
 
 #define UserStackSize 1024  // increase this as necessary!
 

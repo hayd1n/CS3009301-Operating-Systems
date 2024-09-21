@@ -43,14 +43,14 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "filesys.h"
-
-#include "bitmap.h"
 #include "copyright.h"
-#include "debug.h"
-#include "directory.h"
+
 #include "disk.h"
+#include "bitmap.h"
+#include "directory.h"
 #include "filehdr.h"
+#include "filesys.h"
+#include "debug.h"
 #include "pbitmap.h"
 
 // Sectors containing the file headers for the bitmap of free sectors,

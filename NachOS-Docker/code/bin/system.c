@@ -4,10 +4,9 @@
  of liability and disclaimer of warranty provisions.
  */
 
+#include "copyright.h"
 #include <stdio.h>
 #include <syscall.h>
-
-#include "copyright.h"
 #include "int.h"
 
 extern int Reg[];

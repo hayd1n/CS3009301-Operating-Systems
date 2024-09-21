@@ -13,11 +13,10 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "disk.h"
-
 #include "copyright.h"
-#include "debug.h"
+#include "disk.h"
 #include "main.h"
+#include "debug.h"
 
 // We put a magic number at the front of the UNIX file representing the
 // disk, to make it less likely we will accidentally treat a useful file

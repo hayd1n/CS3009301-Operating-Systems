@@ -16,9 +16,8 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "thread.h"
-
 #include "copyright.h"
+#include "thread.h"
 #include "switch.h"
 #include "synch.h"
 #include "sysdep.h"

@@ -13,11 +13,10 @@
 
 #ifdef FILESYS
 
-#include "openfile.h"
-
 #include "copyright.h"
-#include "debug.h"
 #include "filehdr.h"
+#include "openfile.h"
+#include "debug.h"
 #include "main.h"
 
 //----------------------------------------------------------------------

@@ -16,16 +16,16 @@
 #include "copyright.h"
 #undef MAIN
 
-#include <aouthdr.h>
-#include <fcntl.h>
 #include <filehdr.h>
-#include <limits.h>
-#include <reloc.h>
+#include <aouthdr.h>
 #include <scnhdr.h>
-#include <stdio.h>
+#include <reloc.h>
 #include <syms.h>
-#include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <limits.h>
+#include <stdio.h>
 
 /* NOTE -- once you have implemented large files, it's ok to make this bigger! */
 #define StackSize 1024 /* in bytes */

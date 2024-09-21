@@ -20,9 +20,8 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "interrupt.h"
-
 #include "copyright.h"
+#include "interrupt.h"
 #include "main.h"
 
 // String definitions for debugging messages

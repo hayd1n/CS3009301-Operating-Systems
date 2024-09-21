@@ -17,10 +17,10 @@
 #ifndef ALARM_H
 #define ALARM_H
 
-#include "callback.h"
 #include "copyright.h"
-#include "timer.h"
 #include "utility.h"
+#include "callback.h"
+#include "timer.h"
 
 // The following class defines a software alarm clock.
 class Alarm : public CallBackObj {

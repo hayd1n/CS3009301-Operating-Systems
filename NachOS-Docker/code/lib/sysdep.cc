@@ -23,17 +23,15 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "sysdep.h"
-
-#include <sys/socket.h>
-#include <sys/un.h>
-
 #include "copyright.h"
 #include "debug.h"
+#include "sysdep.h"
 #include "stdlib.h"
-#include "sys/file.h"
-#include "sys/time.h"
 #include "unistd.h"
+#include "sys/time.h"
+#include "sys/file.h"
+#include <sys/socket.h>
+#include <sys/un.h>
 
 #ifdef LINUX  // at this point, linux doesn't support mprotect
 #define NO_MPROT
