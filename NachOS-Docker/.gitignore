@@ -1,0 +1,34 @@
+# Desktop Services Store
+*.DS_Store
+
+# Object File
+*.o
+#*.s
+swtch.s
+*.coff
+
+# Binary
+nachos
+coff2noff
+
+# test folder
+#/code/test/*.c
+#/code/test/*
+#/code/test/halt
+
+# Temp file
+*.swp
+*~
+
+# VSCode related
+.vscode
+
+# Test Binaries
+/code/test/halt
+/code/test/matmult
+/code/test/shell
+/code/test/sort
+/code/test/tesss
+/code/test/test1
+/code/test/test2
+/code/test/test3

@@ -1,0 +1,25 @@
+# NachOS Usage
+
+- `./nachos [-d debugFlags]`: Causes certain debugging messages to be printed, where legal `debugFlags` are
+  - `+`: turn on all debug messages
+  - `t`: threads
+  - `s`: locks, semaphores, condition vars
+  - `i`: interrupt emulation
+  - `m`: machine emulation (USER_PROGRAM)
+  - `d`: disk emulation (FILESYS)
+  - `f`: file system (FILESYS)
+  - `a`: address spaces (USER_PROGRAM)
+  - `n`: network emulation (NETWORK)
+    - Example usage: `./nachos -d +`: will turn on all debug messages
+- `./nachos [-e] filename`: Execute user program in `filename`
+  - Example usage: `./nachos -e file1 -e file2`: executing file1 and file2.
+- `./nachos [-h]`: Prints help message
+- `./nachos [-m int]`: Sets this machine's host id in `int` (needed for the network)
+  - Example usage: `./nachos -m 1`: Sets this machine's host id to 1
+- `./nachos [-n float]`: Sets the network reliability in `float`
+  - Example usage: `./nachos -n 1`: Sets the network reliability to 1
+- `./nachos [-rs randomSeed]`: Sets random seed in `randomSeed`
+  - Example usage: `./nachos -rs 123`: Sets random seed to 123
+- `./nachos [-s]`: Print machine status during the machine is on. (`debugUserProg = TRUE` in `userprog/userkernel.cc` )
+- `./nachos [-u]`: Prints entire set of legal flags
+- `./nachos [-z]`: Prints copyright string
