@@ -36,6 +36,7 @@
 #define SC_Mul 15
 #define SC_Div 16
 #define SC_Mod 17
+#define SC_Print 18
 
 #ifndef IN_ASM
 
@@ -131,15 +132,28 @@ void ThreadYield();
 
 void PrintInt(int number);
 
+/*
+ * ======================================================================
+ * Homework 01 Begin
+ */
+
 // Sleep
-void Sleep(int msecs);  // implemented by Hayden Chang
+void Sleep(int msecs);
 
 // Calc
-int Add(int op1, int op2);  // implemented by Hayden Chang
-int Sub(int op1, int op2);  // implemented by Hayden Chang
-int Mul(int op1, int op2);  // implemented by Hayden Chang
-int Div(int op1, int op2);  // implemented by Hayden Chang
-int Mod(int op1, int op2);  // implemented by Hayden Chang
+int Add(int op1, int op2);
+int Sub(int op1, int op2);
+int Mul(int op1, int op2);
+int Div(int op1, int op2);
+int Mod(int op1, int op2);
+
+// Print
+int Print(char *str);
+
+/*
+ * Homework 01 End
+ * ======================================================================
+ */
 
 #endif /* IN_ASM */
 

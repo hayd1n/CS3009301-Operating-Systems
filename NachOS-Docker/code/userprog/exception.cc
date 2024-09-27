@@ -27,6 +27,8 @@
 #include "syscall.h"
 
 #define STUDENT_ID 11030202
+#define PRINT_REPLACE_CHAR_1 'B'
+#define PRINT_REPLACE_CHAR_2 'b'
 
 //----------------------------------------------------------------------
 // ExceptionHandler
@@ -129,6 +131,41 @@ void ExceptionHandler(ExceptionType which) {
                 int result = op1 % op2;
                 kernel->machine->WriteRegister(2, result);
             }
+            return;
+        }
+        case SC_Print: {
+            /*
+             * Because my student ID is B11030202, I will print the string start with
+             * `[B11030202_Print]` and due to the last two characters of my student ID is `02`, 02 %
+             * 26 = 2, so I will replace `B` and `b` with `*`.
+             */
+            cout << "[B11030202_Print]";
+            val = 0;
+            for ( int addr = kernel->machine->ReadRegister(4);; addr++ ) {
+                int v;
+                bool success = kernel->machine->ReadMem(addr, 1, &v);
+                if ( !success ) {
+                    cerr << "Error: ReadMem failed" << endl;
+                    break;
+                }
+                char c = (char)v;
+                if ( c == '\0' ) {
+                    break;
+                }
+
+                if ( c == PRINT_REPLACE_CHAR_1 || c == PRINT_REPLACE_CHAR_2 ) {
+                    cout << "*";
+                } else {
+                    cout << c;
+                }
+
+                // Count the number of characters only which have been printed
+                val++;
+            }
+
+            // Return the number of characters printed
+            kernel->machine->WriteRegister(2, val);
+
             return;
         }
         default:
