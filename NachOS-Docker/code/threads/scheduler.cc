@@ -24,6 +24,34 @@
 #include "main.h"
 
 //----------------------------------------------------------------------
+// SleepFunc::SleepFunc
+//----------------------------------------------------------------------
+
+bool SleepFunc::isEmpty() { return tList.size() == 0; }
+
+void SleepFunc::napTime(Thread *t, int x) {
+    ASSERT(kernel->interrupt->getLevel() == IntOff);
+    tList.push_back(SleepT(t, currentINT + x));
+    t->Sleep(false);
+}
+
+bool SleepFunc::wakeUp() {
+    bool woken = false;
+    currentINT++;
+    for ( std::list<SleepT>::iterator it = tList.begin(); it != tList.end(); ) {
+        if ( it->when == currentINT ) {
+            it->thread->setStatus(READY);
+            kernel->scheduler->ReadyToRun(it->thread);
+            it = tList.erase(it);
+            woken = true;
+        } else {
+            it++;
+        }
+    }
+    return woken;
+}
+
+//----------------------------------------------------------------------
 // Scheduler::Scheduler
 // 	Initialize the list of ready but not running threads.
 //	Initially, no ready threads.
@@ -97,7 +125,7 @@ void Scheduler::Run(Thread *nextThread, bool finishing) {
     Thread *oldThread = kernel->currentThread;
 
     //	cout << "Current Thread" <<oldThread->getName() << "    Next
-    //Thread"<<nextThread->getName()<<endl;
+    // Thread"<<nextThread->getName()<<endl;
 
     ASSERT(kernel->interrupt->getLevel() == IntOff);
 
