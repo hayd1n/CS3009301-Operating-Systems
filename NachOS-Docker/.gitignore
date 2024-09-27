@@ -8,7 +8,7 @@ swtch.s
 *.coff
 
 # Binary
-nachos
+# nachos
 coff2noff
 
 # test folder
