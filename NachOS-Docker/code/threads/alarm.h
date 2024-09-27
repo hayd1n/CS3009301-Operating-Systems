@@ -35,7 +35,7 @@ public:
 private:
     Timer *timer;  // the hardware timer device
 
-    SleepFunc sleeper;
+    SleepFunc sleeper;  // Homework 01
 
     void CallBack();  // called when the hardware
                       // timer generates an interrupt

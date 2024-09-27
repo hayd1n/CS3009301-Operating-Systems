@@ -148,6 +148,7 @@ Sleep:
 
     .global Add
     .ent    Add
+
 Add:
     addiu  $2,$0,SC_Add
     syscall

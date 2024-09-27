@@ -148,11 +148,14 @@ void ExceptionHandler(ExceptionType which) {
                     cerr << "Error: ReadMem failed" << endl;
                     break;
                 }
+
                 char c = (char)v;
+                // Break if the character is '\0'
                 if ( c == '\0' ) {
                     break;
                 }
 
+                // Replace the character
                 if ( c == PRINT_REPLACE_CHAR_1 || c == PRINT_REPLACE_CHAR_2 ) {
                     cout << "*";
                 } else {
