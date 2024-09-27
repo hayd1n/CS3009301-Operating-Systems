@@ -21,9 +21,12 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
+#include <iostream>
 #include "copyright.h"
 #include "main.h"
 #include "syscall.h"
+
+#define STUDENT_ID 11030202
 
 //----------------------------------------------------------------------
 // ExceptionHandler
@@ -83,6 +86,51 @@ void ExceptionHandler(ExceptionType which) {
             cout << "return value:" << val << endl;
             kernel->currentThread->Finish();
             break;
+        case SC_Add: {
+            int op1 = kernel->machine->ReadRegister(4);
+            int op2 = kernel->machine->ReadRegister(5);
+            int result = op1 + op2;
+            kernel->machine->WriteRegister(2, result);
+            return;
+        }
+        case SC_Sub: {
+            int op1 = kernel->machine->ReadRegister(4);
+            int op2 = kernel->machine->ReadRegister(5);
+            int result = op1 - op2;
+            kernel->machine->WriteRegister(2, result);
+            return;
+        }
+        case SC_Mul: {
+            int op1 = kernel->machine->ReadRegister(4);
+            int op2 = kernel->machine->ReadRegister(5);
+            int result = op1 * op2;
+            kernel->machine->WriteRegister(2, result);
+            return;
+        }
+        case SC_Div: {
+            int op1 = kernel->machine->ReadRegister(4);
+            int op2 = kernel->machine->ReadRegister(5);
+            if ( op2 == 0 ) {
+                cerr << "Error: Divide by zero" << endl;
+                kernel->machine->WriteRegister(2, STUDENT_ID);
+            } else {
+                int result = op1 / op2;
+                kernel->machine->WriteRegister(2, result);
+            }
+            return;
+        }
+        case SC_Mod: {
+            int op1 = kernel->machine->ReadRegister(4);
+            int op2 = kernel->machine->ReadRegister(5);
+            if ( op2 == 0 ) {
+                cerr << "Error: Divide by zero" << endl;
+                kernel->machine->WriteRegister(2, STUDENT_ID);
+            } else {
+                int result = op1 % op2;
+                kernel->machine->WriteRegister(2, result);
+            }
+            return;
+        }
         default:
             cerr << "Unexpected system call " << type << "\n";
             break;

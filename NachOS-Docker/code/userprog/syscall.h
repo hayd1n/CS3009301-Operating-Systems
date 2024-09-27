@@ -31,6 +31,11 @@
 #define SC_ThreadYield 10
 #define SC_PrintInt 11
 #define SC_Sleep 12
+#define SC_Add 13
+#define SC_Sub 14
+#define SC_Mul 15
+#define SC_Div 16
+#define SC_Mod 17
 
 #ifndef IN_ASM
 
@@ -124,9 +129,17 @@ void ThreadFork(void (*func)());
  */
 void ThreadYield();
 
-void PrintInt(int number);  // my System Call
+void PrintInt(int number);
 
-void Sleep(int msecs);  // my System Call
+// Sleep
+void Sleep(int msecs);  // implemented by Hayden Chang
+
+// Calc
+int Add(int op1, int op2);  // implemented by Hayden Chang
+int Sub(int op1, int op2);  // implemented by Hayden Chang
+int Mul(int op1, int op2);  // implemented by Hayden Chang
+int Div(int op1, int op2);  // implemented by Hayden Chang
+int Mod(int op1, int op2);  // implemented by Hayden Chang
 
 #endif /* IN_ASM */
 

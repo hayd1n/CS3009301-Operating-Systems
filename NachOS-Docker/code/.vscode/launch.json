@@ -38,6 +38,44 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "(gdb) Sleep",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/userprog/nachos",
+            "args": ["-e", "${workspaceFolder}/test/sleep"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "enable gdb beautiful display",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(gdb) Calc",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/userprog/nachos",
+            "args": ["-e", "${workspaceFolder}/test/calc"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "enable gdb beautiful display",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }

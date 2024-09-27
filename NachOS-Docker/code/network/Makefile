@@ -2769,8 +2769,7 @@ addrspace.o: ../userprog/addrspace.cc /usr/include/stdc-predef.h \
  ../machine/disk.h ../threads/synch.h ../threads/main.h \
  ../userprog/addrspace.h ../bin/noff.h
 exception.o: ../userprog/exception.cc /usr/include/stdc-predef.h \
- ../lib/copyright.h ../threads/main.h ../lib/debug.h ../lib/copyright.h \
- ../lib/utility.h ../lib/sysdep.h /usr/include/c++/11/iostream \
+ /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -2915,13 +2914,14 @@ exception.o: ../userprog/exception.cc /usr/include/stdc-predef.h \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/stdlib.h \
- /usr/include/string.h /usr/include/strings.h ../network/netkernel.h \
- ../userprog/userkernel.h ../threads/kernel.h ../lib/utility.h \
- ../threads/thread.h ../lib/sysdep.h ../machine/machine.h \
- ../machine/translate.h ../userprog/addrspace.h ../filesys/filesys.h \
- ../filesys/openfile.h ../threads/scheduler.h ../lib/list.h \
- ../lib/debug.h ../lib/list.cc /usr/include/c++/11/list \
+ /usr/include/c++/11/bits/istream.tcc ../lib/copyright.h \
+ ../threads/main.h ../lib/debug.h ../lib/copyright.h ../lib/utility.h \
+ ../lib/sysdep.h /usr/include/c++/11/stdlib.h /usr/include/string.h \
+ /usr/include/strings.h ../network/netkernel.h ../userprog/userkernel.h \
+ ../threads/kernel.h ../lib/utility.h ../threads/thread.h ../lib/sysdep.h \
+ ../machine/machine.h ../machine/translate.h ../userprog/addrspace.h \
+ ../filesys/filesys.h ../filesys/openfile.h ../threads/scheduler.h \
+ ../lib/list.h ../lib/debug.h ../lib/list.cc /usr/include/c++/11/list \
  /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
