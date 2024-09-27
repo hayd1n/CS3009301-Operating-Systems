@@ -480,8 +480,12 @@ void ExceptionHandler(ExceptionType which) {
         case SC_Print: {
             /*
              * Because my student ID is B11030202, I will print the string start with
-             * `[B11030202_Print]` and due to the last two characters of my student ID is `02`, 02 %
-             * 26 = 2, so I will replace `B` and `b` with `*`.
+             * `[B11030202_Print]` and due to the last two characters of my student ID is `02`,
+             * 02 % 26 = 2, so I will replace `C` and `c` with `*`.
+             * | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | ...  | 25   |
+             * | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+             * | A    | B    | C    | D    | E    | F    | G    | H    | ...  | Z    |
+             * | a    | b    | c    | d    | e    | f    | g    | h    | ...  | z    |
              */
             cout << "[B11030202_Print]";
             val = 0;
@@ -509,6 +513,11 @@ void ExceptionHandler(ExceptionType which) {
                 // Count the number of characters only which have been printed
                 val++;
             }
+
+            // Return the number of characters printed
+            kernel->machine->WriteRegister(2, val);
+
+            return;
         }
         }
         ...
@@ -555,13 +564,13 @@ int main() {
 root@dac78a3247e0:/nachos# ./userprog/nachos -e ./test/printstr
 Total threads number is 1
 Thread ./test/printstr is executing.
-[B11030202_Print]Hello NachOS2024!
+[B11030202_Print]Hello Na*hOS2024!
 Print integer:18
-[B11030202_Print]Have a nice day at school!
+[B11030202_Print]Have a ni*e day at s*hool!
 Print integer:27
-[B11030202_Print]A*CDEFGHIJKLMNOPQRSTUVWXYZ
+[B11030202_Print]AB*DEFGHIJKLMNOPQRSTUVWXYZ
 Print integer:27
-[B11030202_Print]a*cdefghijklmnopqrstuvwxyz
+[B11030202_Print]ab*defghijklmnopqrstuvwxyz
 Print integer:27
 return value:0
 No threads ready or runnable, and no pending interrupts.

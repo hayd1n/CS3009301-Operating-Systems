@@ -27,8 +27,8 @@
 #include "syscall.h"
 
 #define STUDENT_ID 11030202
-#define PRINT_REPLACE_CHAR_1 'B'
-#define PRINT_REPLACE_CHAR_2 'b'
+#define PRINT_REPLACE_CHAR_1 'C'
+#define PRINT_REPLACE_CHAR_2 'c'
 
 //----------------------------------------------------------------------
 // ExceptionHandler
@@ -136,8 +136,12 @@ void ExceptionHandler(ExceptionType which) {
         case SC_Print: {
             /*
              * Because my student ID is B11030202, I will print the string start with
-             * `[B11030202_Print]` and due to the last two characters of my student ID is `02`, 02 %
-             * 26 = 2, so I will replace `B` and `b` with `*`.
+             * `[B11030202_Print]` and due to the last two characters of my student ID is `02`,
+             * 02 % 26 = 2, so I will replace `C` and `c` with `*`.
+             * | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | ...  | 25   |
+             * | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+             * | A    | B    | C    | D    | E    | F    | G    | H    | ...  | Z    |
+             * | a    | b    | c    | d    | e    | f    | g    | h    | ...  | z    |
              */
             cout << "[B11030202_Print]";
             val = 0;
