@@ -1475,9 +1475,9 @@ kernel.o: ../threads/kernel.cc /usr/include/stdc-predef.h \
  ../machine/disk.h ../threads/synch.h ../threads/kernel.h \
  ../threads/synch.h ../threads/synchlist.h ../threads/synchlist.cc \
  ../lib/libtest.h ../machine/elevatortest.h
-main.o: ../threads/main.cc /usr/include/stdc-predef.h ../lib/copyright.h \
- ../threads/main.h ../lib/debug.h ../lib/copyright.h ../lib/utility.h \
- ../lib/sysdep.h /usr/include/c++/11/iostream \
+main.o: ../threads/main.cc /usr/include/stdc-predef.h ../lib/debug.h \
+ ../lib/copyright.h ../lib/utility.h ../lib/sysdep.h \
+ /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -1623,8 +1623,9 @@ main.o: ../threads/main.cc /usr/include/stdc-predef.h ../lib/copyright.h \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/stdlib.h \
- /usr/include/string.h /usr/include/strings.h ../userprog/userkernel.h \
- ../threads/kernel.h ../lib/utility.h ../threads/thread.h ../lib/sysdep.h \
+ /usr/include/string.h /usr/include/strings.h ../lib/copyright.h \
+ ../threads/main.h ../userprog/userkernel.h ../threads/kernel.h \
+ ../lib/utility.h ../threads/thread.h ../lib/sysdep.h \
  ../machine/machine.h ../machine/translate.h ../userprog/addrspace.h \
  ../filesys/filesys.h ../filesys/openfile.h ../threads/scheduler.h \
  ../lib/list.h ../lib/debug.h ../lib/list.cc /usr/include/c++/11/list \
