@@ -32,3 +32,6 @@ shell
 matmult
 sort
 test1
+sleep
+calc
+printstr
