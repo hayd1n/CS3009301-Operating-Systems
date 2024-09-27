@@ -77,9 +77,9 @@ system_trap() {
         Reg[1] = (int)lseek(u_to_int_fd(o0), (long)o1, o2);
         break;
 
-    case SYS_ioctl: /* 54 */
-    {               /* copied from sas -- I don't understand yet. */
-        /* see dave weaver */
+    case SYS_ioctl:       /* 54 */
+    {                     /* copied from sas -- I don't understand yet. */
+                          /* see dave weaver */
 #define IOCPARM_MASK 0x7f /* parameters must be < 128 bytes */
         int size = (o1 >> 16) & IOCPARM_MASK;
         char ioctl_group = (o1 >> 8) & 0x00ff;
@@ -115,7 +115,7 @@ system_trap() {
 
 char *u_to_int_addr(ptr)
 int ptr;
-{   /* convert a user pointer to the real address   */
+{ /* convert a user pointer to the real address   */
     /* used in the interpreter			*/
 
     return ((char *)((int)mem - memoffset + ptr));

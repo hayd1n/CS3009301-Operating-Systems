@@ -20,15 +20,15 @@ coff2noff
 *.swp
 *~
 
-# VSCode related
-.vscode
+# Output file
+compile_commands.json
 
-# Test Binaries
-/code/test/halt
-/code/test/matmult
-/code/test/shell
-/code/test/sort
-/code/test/tesss
-/code/test/test1
-/code/test/test2
-/code/test/test3
+# Clangd cache
+.cache
+
+# Tests
+halt
+shell
+matmult
+sort
+test1

@@ -170,7 +170,7 @@ void DeallocBoundedArray(char *ptr, int size) {
 
     mprotect(ptr - pgSize, pgSize, PROT_READ | PROT_WRITE | PROT_EXEC);
     mprotect(ptr + size, pgSize, PROT_READ | PROT_WRITE | PROT_EXEC);
-    delete[] (ptr - pgSize);
+    delete[](ptr - pgSize);
 #endif
 }
 
@@ -383,7 +383,8 @@ void ReadFromSocket(int sockID, char *buffer, int packetSize) {
 
     if ( retVal != packetSize ) {
         perror("in recvfrom");
-        cerr << "called with " << packetSize << ", got back " << retVal << ", and " << "\n";
+        cerr << "called with " << packetSize << ", got back " << retVal << ", and "
+             << "\n";
     }
     ASSERT(retVal == packetSize);
 }

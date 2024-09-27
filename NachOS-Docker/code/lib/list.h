@@ -92,7 +92,7 @@ template <class T>
 class SortedList : public List<T> {
 public:
     SortedList(int (*comp)(T x, T y)) : List<T>() { compare = comp; };
-    ~SortedList() {};  // base class destructor called automatically
+    ~SortedList(){};  // base class destructor called automatically
 
     void Insert(T item);  // insert an item onto the list in sorted order
 

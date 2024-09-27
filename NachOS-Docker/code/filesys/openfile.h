@@ -31,7 +31,7 @@ public:
     OpenFile(int f) {
         file = f;
         currentOffset = 0;
-    }  // open the file
+    }                             // open the file
     ~OpenFile() { Close(file); }  // close the file
 
     int ReadAt(char *into, int numBytes, int position) {
