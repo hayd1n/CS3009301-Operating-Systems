@@ -384,12 +384,13 @@ void Thread::RestoreUserState() {
 //	purposes.
 //----------------------------------------------------------------------
 
-static void SimpleThread(int which) {
-    int num;
-
-    for ( num = 0; num < 5; num++ ) {
-        cout << "*** thread " << which << " looped " << num << " times\n";
-        kernel->currentThread->Yield();
+static void SimpleThread() {
+    Thread *thread = kernel->currentThread;
+    while ( thread->getBurstTime() > 0 ) {
+        thread->setBurstTime(thread->getBurstTime() - 1);
+        printf("%s: %d\n", kernel->currentThread->getName(), kernel->currentThread->getBurstTime());
+        // kernel->currentThread->Yield();
+        kernel->interrupt->OneTick();
     }
 }
 
@@ -402,8 +403,17 @@ static void SimpleThread(int which) {
 void Thread::SelfTest() {
     DEBUG(dbgThread, "Entering Thread::SelfTest");
 
-    Thread *t = new Thread("forked thread");
+    const int number = 3;
+    char *name[number] = {"A", "B", "C"};
+    int burst[number] = {3, 10, 4};
+    int priority[number] = {4, 5, 3};
 
-    t->Fork((VoidFunctionPtr)SimpleThread, (void *)1);
-    SimpleThread(0);
+    Thread *t;
+    for ( int i = 0; i < number; i++ ) {
+        t = new Thread(name[i]);
+        t->setPriority(priority[i]);
+        t->setBurstTime(burst[i]);
+        t->Fork((VoidFunctionPtr)SimpleThread, (void *)NULL);
+    }
+    kernel->currentThread->Yield();
 }

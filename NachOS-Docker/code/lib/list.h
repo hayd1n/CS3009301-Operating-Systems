@@ -103,11 +103,9 @@ public:
 private:
     int (*compare)(T x, T y);  // function for sorting list elements
 
-    void Prepend(T item) {
-        Insert(item);
-    }                                      // *pre*pending has no meaning
-                                           //	in a sorted list
-    void Append(T item) { Insert(item); }  // neither does *ap*pend
+    void Prepend(T item) { Insert(item); }  // *pre*pending has no meaning
+                                            //	in a sorted list
+    void Append(T item) { Insert(item); }   // neither does *ap*pend
 };
 
 // The following class can be used to step through a list.

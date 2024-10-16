@@ -24,31 +24,12 @@
 #include "main.h"
 
 //----------------------------------------------------------------------
-// SleepFunc::SleepFunc
+// Compare function
 //----------------------------------------------------------------------
-
-bool SleepFunc::isEmpty() { return tList.size() == 0; }
-
-void SleepFunc::napTime(Thread *t, int x) {
-    ASSERT(kernel->interrupt->getLevel() == IntOff);
-    tList.push_back(SleepT(t, currentINT + x));
-    t->Sleep(false);
-}
-
-bool SleepFunc::wakeUp() {
-    bool woken = false;
-    currentINT++;
-    for ( std::list<SleepT>::iterator it = tList.begin(); it != tList.end(); ) {
-        if ( it->when == currentINT ) {
-            it->thread->setStatus(READY);
-            kernel->scheduler->ReadyToRun(it->thread);
-            it = tList.erase(it);
-            woken = true;
-        } else {
-            it++;
-        }
-    }
-    return woken;
+int PriorityCompare(Thread *a, Thread *b) {
+    if ( a->getPriority() == b->getPriority() )
+        return 0;
+    return a->getPriority() > b->getPriority() ? 1 : -1;
 }
 
 //----------------------------------------------------------------------
@@ -57,9 +38,24 @@ bool SleepFunc::wakeUp() {
 //	Initially, no ready threads.
 //----------------------------------------------------------------------
 
-Scheduler::Scheduler() {
-    //	schedulerType = type;
-    readyList = new List<Thread *>;
+Scheduler::Scheduler() { Scheduler(RR); }
+
+Scheduler::Scheduler(SchedulerType type) {
+    schedulerType = type;
+    switch ( schedulerType ) {
+    case RR:
+        readyList = new List<Thread *>;
+        break;
+    case SJF:
+        /* todo */
+        break;
+    case Priority:
+        readyList = new SortedList<Thread *>(PriorityCompare);
+        break;
+    case FIFO:
+        /* todo */
+        break;
+    }
     toBeDestroyed = NULL;
 }
 
@@ -125,7 +121,7 @@ void Scheduler::Run(Thread *nextThread, bool finishing) {
     Thread *oldThread = kernel->currentThread;
 
     //	cout << "Current Thread" <<oldThread->getName() << "    Next
-    // Thread"<<nextThread->getName()<<endl;
+    //Thread"<<nextThread->getName()<<endl;
 
     ASSERT(kernel->interrupt->getLevel() == IntOff);
 

@@ -124,10 +124,10 @@ public:
        // triggered the callback.
 
 private:
-    int numElevators;              // how many elevators in this bank?
-    int numFloors;                 // how many floors in this building?
-    CallBackObj *callRiders;       // call when an event occurs that
-                                   // riders would be interested in
+    int numElevators;         // how many elevators in this bank?
+    int numFloors;            // how many floors in this building?
+    CallBackObj *callRiders;  // call when an event occurs that
+                              // riders would be interested in
     CallBackObj *callControllers;  // call when an event occurs that
                                    // elevator controller threads
     // would be interested in

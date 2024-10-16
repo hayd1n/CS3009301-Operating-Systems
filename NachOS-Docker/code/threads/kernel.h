@@ -44,6 +44,7 @@ public:
 
 private:
     bool randomSlice;  // enable pseudo-random time slicing
+    SchedulerType type;
 };
 
 #endif  // KERNEL_H

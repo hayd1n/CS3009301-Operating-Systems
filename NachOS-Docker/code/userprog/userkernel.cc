@@ -24,7 +24,7 @@ UserProgKernel::UserProgKernel(int argc, char **argv) : ThreadedKernel(argc, arg
         if ( strcmp(argv[i], "-s") == 0 ) {
             debugUserProg = TRUE;
         } else if ( strcmp(argv[i], "-e") == 0 ) {
-            execfile[++execfileNum] = argv[++i];
+            execfile[++execfileNum] = argv[i + 1];
         } else if ( strcmp(argv[i], "-u") == 0 ) {
             cout << "===========The following argument is defined in userkernel.cc" << endl;
             cout << "Partial usage: nachos [-s]\n";

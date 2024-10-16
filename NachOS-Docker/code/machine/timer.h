@@ -40,7 +40,7 @@ private:
     bool randomize;                 // set if we need to use a random timeout delay
     CallBackObj *callPeriodically;  // call this every TimerTicks time units
     bool disable;                   // turn off the timer device after next
-                                    // interrupt.
+                   // interrupt.
 
     void CallBack();  // called internally when the hardware
                       // timer generates an interrupt

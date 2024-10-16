@@ -29,19 +29,6 @@ const char dbgFile = 'f';    // file system (FILESYS)
 const char dbgAddr = 'a';    // address spaces (USER_PROGRAM)
 const char dbgNet = 'n';     // network emulation (NETWORK)
 
-/*
- * ================================
- * Homework 1 Start
- *
- * Because my student ID is B11030202, the last two characters are `02`
- * and 02 % 26 % 10 = 2, so I will use `2` as the flag for my homework.
- */
-const char dbgHW1 = '2';
-/*
- * Homework 1 End
- * ================================
- */
-
 class Debug {
 public:
     Debug(char *flagList);

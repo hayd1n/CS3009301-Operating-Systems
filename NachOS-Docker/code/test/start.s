@@ -138,63 +138,6 @@ PrintInt:
 	j       $31
 	.end    PrintInt
 
-    .global Sleep
-    .ent    Sleep
-Sleep:
-    addiu  $2,$0,SC_Sleep
-    syscall
-    j $31
-    .end    Sleep
-
-    .global Add
-    .ent    Add
-
-Add:
-    addiu  $2,$0,SC_Add
-    syscall
-    j $31
-    .end    Add
-
-    .global Sub
-    .ent    Sub
-Sub:
-    addiu  $2,$0,SC_Sub
-    syscall
-    j $31
-    .end    Sub
-
-    .global Mul
-    .ent    Mul
-Mul:
-    addiu  $2,$0,SC_Mul
-    syscall
-    j $31
-    .end    Mul
-
-    .global Div
-    .ent    Div
-Div:
-    addiu  $2,$0,SC_Div
-    syscall
-    j $31
-    .end    Div
-
-    .global Mod
-    .ent    Mod
-Mod:
-    addiu  $2,$0,SC_Mod
-    syscall
-    j $31
-    .end    Mod
-
-    .global Print
-    .ent    Print
-Print:
-    addiu  $2,$0,SC_Print
-    syscall
-    j $31
-    .end    Print
-
 /* dummy function to keep gcc happy */
         .globl  __main
         .ent    __main

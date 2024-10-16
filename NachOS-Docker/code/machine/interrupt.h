@@ -132,9 +132,9 @@ private:
     SortedList<PendingInterrupt *> *pending;
     // the list of interrupts scheduled
     // to occur in the future
-    bool inHandler;        // TRUE if we are running an interrupt handler
-    bool yieldOnReturn;    // TRUE if we are to context switch
-                           // on return from the interrupt handler
+    bool inHandler;      // TRUE if we are running an interrupt handler
+    bool yieldOnReturn;  // TRUE if we are to context switch
+                         // on return from the interrupt handler
     MachineStatus status;  // idle, kernel mode, user mode
 
     // these functions are internal to the interrupt simulation code

@@ -34,8 +34,8 @@ public:
     NetworkAddress to;    // Destination machine ID
     NetworkAddress from;  // source machine ID
     unsigned length;      // bytes of packet data, excluding the
-                          // packet header (but including the
-                          // MailHeader prepended by the post office)
+                      // packet header (but including the
+                      // MailHeader prepended by the post office)
 };
 
 #define MaxWireSize 64  // largest packet that can go out on the wire
@@ -73,10 +73,10 @@ private:
 
     CallBackObj *callWhenAvail;  // Interrupt handler, signalling packet has
                                  // 	arrived.
-    bool packetAvail;            // Packet has arrived, can be pulled off of
-                                 //   network
-    PacketHeader inHdr;          // Information about arrived packet
-    char inbox[MaxPacketSize];   // Data for arrived packet
+    bool packetAvail;  // Packet has arrived, can be pulled off of
+                       //   network
+    PacketHeader inHdr;         // Information about arrived packet
+    char inbox[MaxPacketSize];  // Data for arrived packet
 };
 
 class NetworkOutput : public CallBackObj {
@@ -103,7 +103,7 @@ private:
     double chanceToWork;        // Likelihood packet will be dropped
     CallBackObj *callWhenDone;  // Interrupt handler, signalling next packet
                                 //      can be sent.
-    bool sendBusy;              // Packet is being sent.
+    bool sendBusy;  // Packet is being sent.
 };
 
 #endif  // NETWORK_H

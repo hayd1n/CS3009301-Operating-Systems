@@ -31,7 +31,9 @@ halt
 shell
 matmult
 sort
-test1
 sleep
 calc
 printstr
+test1
+test2
+test3

@@ -14,7 +14,6 @@
 // All rights reserved.  See copyright.h for copyright notice and limitation
 // of liability and disclaimer of warranty provisions.
 
-#include "debug.h"
 #define MAIN
 #include "copyright.h"
 #undef MAIN
@@ -66,9 +65,6 @@ int main(int argc, char **argv) {
         }
     }
     debug = new Debug(debugArg);
-
-    // Homework 1
-    DEBUG(dbgHW1, "[DEBUG]B11030202");
 
     DEBUG(dbgThread, "Entering main");
 

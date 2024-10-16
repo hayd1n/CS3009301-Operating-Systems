@@ -90,7 +90,7 @@ class Machine {
 public:
     Machine(bool debug);  // Initialize the simulation of the hardware
                           // for running user programs
-    ~Machine();           // De-allocate the data structures
+    ~Machine();  // De-allocate the data structures
 
     // Routines callable by the Nachos kernel
     void Run();  // Run a user program
@@ -166,8 +166,8 @@ private:
 
     int registers[NumTotalRegs];  // CPU registers, for executing user programs
 
-    bool singleStep;   // drop back into the debugger after each
-                       // simulated instruction
+    bool singleStep;  // drop back into the debugger after each
+                      // simulated instruction
     int runUntilTime;  // drop back into the debugger when simulated
                        // time reaches this value
 

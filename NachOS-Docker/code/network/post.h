@@ -46,7 +46,7 @@ public:
     MailBoxAddress to;    // Destination mail box
     MailBoxAddress from;  // Mail box to reply to
     unsigned length;      // Bytes of message data (excluding the
-                          // mail header)
+                      // mail header)
 };
 
 // Maximum "payload" -- real data -- that can included in a single message

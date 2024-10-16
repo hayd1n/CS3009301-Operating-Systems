@@ -25,8 +25,8 @@ public:
     int idleTicks;    // Time spent idle (no threads to run)
     int systemTicks;  // Time spent executing system code
     int userTicks;    // Time spent executing user code
-                      // (this is also equal to # of
-                      // user instructions executed)
+                    // (this is also equal to # of
+                    // user instructions executed)
 
     int numDiskReads;            // number of disk read requests
     int numDiskWrites;           // number of disk write requests
