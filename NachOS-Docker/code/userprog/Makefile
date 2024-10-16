@@ -979,9 +979,9 @@ stats.o: ../machine/stats.cc /usr/include/stdc-predef.h \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/stdlib.h \
  /usr/include/string.h /usr/include/strings.h ../machine/stats.h
 timer.o: ../machine/timer.cc /usr/include/stdc-predef.h \
- ../lib/copyright.h ../machine/timer.h ../lib/utility.h \
- ../lib/copyright.h ../machine/callback.h ../threads/main.h \
- ../lib/debug.h ../lib/utility.h ../lib/sysdep.h \
+ ../lib/copyright.h ../machine/stats.h ../machine/timer.h \
+ ../lib/utility.h ../lib/copyright.h ../machine/callback.h \
+ ../threads/main.h ../lib/debug.h ../lib/utility.h ../lib/sysdep.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

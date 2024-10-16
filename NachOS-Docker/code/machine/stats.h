@@ -25,8 +25,8 @@ public:
     int idleTicks;    // Time spent idle (no threads to run)
     int systemTicks;  // Time spent executing system code
     int userTicks;    // Time spent executing user code
-                    // (this is also equal to # of
-                    // user instructions executed)
+                      // (this is also equal to # of
+                      // user instructions executed)
 
     int numDiskReads;            // number of disk read requests
     int numDiskWrites;           // number of disk write requests
@@ -56,5 +56,7 @@ const int SeekTime = 500;      // time disk takes to seek past one track
 const int ConsoleTime = 100;   // time to read or write one character
 const int NetworkTime = 100;   // time to send or receive one packet
 const int TimerTicks = 100;    // (average) time between timer interrupts
+
+extern int timerTicksVar;
 
 #endif  // STATS_H

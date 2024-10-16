@@ -33,6 +33,20 @@ int PriorityCompare(Thread *a, Thread *b) {
 }
 
 //----------------------------------------------------------------------
+// FIFO Compare function
+//----------------------------------------------------------------------
+int FIFOCompare(Thread *a, Thread *b) { return 1; }
+
+//----------------------------------------------------------------------
+// SJF Compare function
+//----------------------------------------------------------------------
+int SJFCompare(Thread *a, Thread *b) {
+    if ( a->getBurstTime() == b->getBurstTime() )
+        return 0;
+    return a->getBurstTime() > b->getBurstTime() ? 1 : -1;
+}
+
+//----------------------------------------------------------------------
 // Scheduler::Scheduler
 // 	Initialize the list of ready but not running threads.
 //	Initially, no ready threads.
@@ -47,13 +61,13 @@ Scheduler::Scheduler(SchedulerType type) {
         readyList = new List<Thread *>;
         break;
     case SJF:
-        /* todo */
+        readyList = new SortedList<Thread *>(SJFCompare);
         break;
     case Priority:
         readyList = new SortedList<Thread *>(PriorityCompare);
         break;
     case FIFO:
-        /* todo */
+        readyList = new SortedList<Thread *>(FIFOCompare);
         break;
     }
     toBeDestroyed = NULL;
@@ -121,7 +135,7 @@ void Scheduler::Run(Thread *nextThread, bool finishing) {
     Thread *oldThread = kernel->currentThread;
 
     //	cout << "Current Thread" <<oldThread->getName() << "    Next
-    //Thread"<<nextThread->getName()<<endl;
+    // Thread"<<nextThread->getName()<<endl;
 
     ASSERT(kernel->interrupt->getLevel() == IntOff);
 

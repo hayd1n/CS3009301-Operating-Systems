@@ -40,3 +40,5 @@ void Statistics::Print() {
     cout << "Network I/O: packets received " << numPacketsRecvd;
     cout << ", sent " << numPacketsSent << "\n";
 }
+
+int timerTicksVar = TimerTicks;

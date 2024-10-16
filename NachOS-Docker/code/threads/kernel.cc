@@ -46,6 +46,17 @@ ThreadedKernel::ThreadedKernel(int argc, char **argv) {
                 type = Priority;
             } else if ( strcmp(argv[i + 1], "SJF") == 0 ) {
                 type = SJF;
+            } else {
+                cout << "Partial usage: nachos [-sche Schedluer Type (RR/FCFS/PRIORITY/SJF)]\n";
+                Exit(1);
+            }
+        } else if ( strcmp(argv[i], "-timertick") == 0 ) {
+            if ( !(i + 1 < argc) ) {
+                cout << "Partial usage: nachos [-timertick Timer Ticks]\n";
+                Exit(1);
+            } else {
+                // set the timer ticks
+                timerTicksVar = atoi(argv[i + 1]);
             }
         }
     }
