@@ -18,6 +18,7 @@
 #define ALARM_H
 
 #include "copyright.h"
+#include "scheduler.h"
 #include "utility.h"
 #include "callback.h"
 #include "timer.h"
@@ -30,6 +31,8 @@ public:
     ~Alarm() { delete timer; }
 
     void WaitUntil(int x);  // suspend execution until time > now + x
+
+    Sleeper sleeper;
 
 private:
     Timer *timer;  // the hardware timer device

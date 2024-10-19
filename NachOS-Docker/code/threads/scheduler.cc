@@ -20,8 +20,58 @@
 
 #include "copyright.h"
 #include "debug.h"
+#include "list.h"
 #include "scheduler.h"
 #include "main.h"
+
+//----------------------------------------------------------------------
+// Sleeper::Sleeper
+//----------------------------------------------------------------------
+
+bool Sleeper::isEmpty() { return tList.size() == 0; }
+
+void Sleeper::napTime(Thread *t, int x) {
+    // Save the current interrupt status
+    IntStatus oldLevel = kernel->interrupt->SetLevel(IntOff);
+
+    ASSERT(kernel->interrupt->getLevel() == IntOff);
+    DEBUG(dbgThread, "Putting thread to sleep: " << t->getName() << " for " << x);
+    tList.push_back(SleepT(t, currentINT + x));
+    if ( kernel->scheduler->getSchedulerType() != SRTF ) {
+        t->Sleep(false);
+    }
+
+    // Restore the interrupt status
+    kernel->interrupt->SetLevel(oldLevel);
+}
+
+bool Sleeper::wakeUp() {
+    // Save the current interrupt status
+    IntStatus oldLevel = kernel->interrupt->SetLevel(IntOff);
+
+    bool woken = false;
+    currentINT++;
+
+    for ( std::list<SleepT>::iterator it = tList.begin(); it != tList.end(); ) {
+        if ( currentINT >= it->when ) {
+            it->thread->setStatus(READY);
+            kernel->scheduler->ReadyToRun(it->thread);
+            it = tList.erase(it);
+            woken = true;
+        } else {
+            it++;
+        }
+    }
+
+    if ( woken ) {
+        DEBUG(dbgThread, "Woken up threads");
+    }
+
+    // Restore the interrupt status
+    kernel->interrupt->SetLevel(oldLevel);
+
+    return woken;
+}
 
 //----------------------------------------------------------------------
 // Compare function
@@ -61,6 +111,7 @@ Scheduler::Scheduler(SchedulerType type) {
         readyList = new List<Thread *>;
         break;
     case SJF:
+    case SRTF:
         readyList = new SortedList<Thread *>(SJFCompare);
         break;
     case Priority:

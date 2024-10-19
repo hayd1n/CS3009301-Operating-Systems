@@ -58,6 +58,7 @@ void Machine::Run() {
     kernel->interrupt->setStatus(UserMode);
     for ( ;; ) {
         OneInstruction(instr);
+
         kernel->interrupt->OneTick();
         if ( singleStep && (runUntilTime <= kernel->stats->totalTicks) )
             Debugger();

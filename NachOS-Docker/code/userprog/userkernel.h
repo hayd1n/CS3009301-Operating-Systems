@@ -44,6 +44,7 @@ private:
     int execfileNum;
     int burstTimes[10];
     int priority[10];
+    int arriveTime[10];
 };
 
 #endif  // USERKERNEL_H

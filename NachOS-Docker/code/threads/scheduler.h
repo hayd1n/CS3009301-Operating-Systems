@@ -13,6 +13,27 @@
 #include "list.h"
 #include "thread.h"
 
+#include <list>
+
+class Sleeper {
+public:
+    Sleeper() : currentINT(0) {}
+    void napTime(Thread* t, int x);
+    bool wakeUp();
+    bool isEmpty();
+
+private:
+    class SleepT {
+    public:
+        SleepT(Thread* t, int x) : thread(t), when(x) {}
+        Thread* thread;
+        int when;
+    };
+
+    int currentINT;
+    std::list<SleepT> tList;
+};
+
 // The following class defines the scheduler/dispatcher abstraction --
 // the data structures and operations needed to keep track of which
 // thread is running, and which threads are ready but not running.
@@ -21,7 +42,8 @@ enum SchedulerType {
     RR,  // Round Robin
     SJF,
     Priority,
-    FIFO
+    FIFO,
+    SRTF
 };
 
 class Scheduler {
@@ -49,8 +71,8 @@ private:
     SchedulerType schedulerType;
     List<Thread*>* readyList;  // queue of threads that are ready to run,
                                // but not running
-    Thread* toBeDestroyed;  // finishing thread to be destroyed
-                            // by the next thread that runs
+    Thread* toBeDestroyed;     // finishing thread to be destroyed
+                               // by the next thread that runs
 };
 
 #endif  // SCHEDULER_H

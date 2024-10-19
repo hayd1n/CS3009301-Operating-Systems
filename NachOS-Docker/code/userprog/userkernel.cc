@@ -7,6 +7,8 @@
 // of liability and disclaimer of warranty provisions.
 
 #include "copyright.h"
+#include "main.h"
+#include "scheduler.h"
 #include "synchconsole.h"
 #include "userkernel.h"
 #include "synchdisk.h"
@@ -45,6 +47,17 @@ UserProgKernel::UserProgKernel(int argc, char **argv) : ThreadedKernel(argc, arg
                     burstTimes[execfileNum] = atoi(argv[i + 1]);
                 } catch ( ... ) {
                     cout << "Error: burst time should be a number." << endl;
+                    Exit(1);
+                }
+            }
+        } else if ( strcmp(argv[i], "-arriv") == 0 ) {
+            if ( !(i + 1 < argc) ) {
+                cout << "Partial usage: nachos [-e execFile] [-arriv arriveTime]\n";
+            } else {
+                try {
+                    arriveTime[execfileNum] = atoi(argv[i + 1]);
+                } catch ( ... ) {
+                    cout << "Error: arrive time should be a number." << endl;
                     Exit(1);
                 }
             }
@@ -111,6 +124,10 @@ void UserProgKernel::Run() {
 
         t[n]->space = new AddrSpace();
         t[n]->Fork((VoidFunctionPtr)&ForkExecute, (void *)t[n]);
+        // Sleep for SRTF
+        if ( kernel->scheduler->getSchedulerType() == SRTF ) {
+            kernel->alarm->sleeper.napTime(t[n], arriveTime[n]);
+        }
         cout << "Thread " << execfile[n] << " is executing." << endl;
     }
     //	Thread *t1 = new Thread(execfile[1]);

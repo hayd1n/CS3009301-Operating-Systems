@@ -9,6 +9,7 @@
 #include "debug.h"
 #include "main.h"
 #include "kernel.h"
+#include "scheduler.h"
 #include "sysdep.h"
 #include "synch.h"
 #include "synchlist.h"
@@ -46,8 +47,11 @@ ThreadedKernel::ThreadedKernel(int argc, char **argv) {
                 type = Priority;
             } else if ( strcmp(argv[i + 1], "SJF") == 0 ) {
                 type = SJF;
+            } else if ( strcmp(argv[i + 1], "SRTF") == 0 ) {
+                type = SRTF;
             } else {
-                cout << "Partial usage: nachos [-sche Schedluer Type (RR/FCFS/PRIORITY/SJF)]\n";
+                cout
+                    << "Partial usage: nachos [-sche Schedluer Type (RR/FCFS/PRIORITY/SJF/SRTF)]\n";
                 Exit(1);
             }
         } else if ( strcmp(argv[i], "-timertick") == 0 ) {
