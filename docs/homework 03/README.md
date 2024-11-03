@@ -248,7 +248,7 @@ do {
   // produce an item in nextp
   wait(empty);
   wait(mutex);
-  //  add the item to the buffer
+  // add the item to the buffer
   signal(mutex);
   signal(full);
 } while (TRUE);
