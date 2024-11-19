@@ -7,8 +7,6 @@
 // of liability and disclaimer of warranty provisions.
 
 #include "copyright.h"
-#include "main.h"
-#include "scheduler.h"
 #include "synchconsole.h"
 #include "userkernel.h"
 #include "synchdisk.h"
@@ -39,39 +37,6 @@ UserProgKernel::UserProgKernel(int argc, char **argv) : ThreadedKernel(argc, arg
             cout << "For example:" << endl;
             cout << "	./nachos -s : Print machine status during the machine is on." << endl;
             cout << "	./nachos -e file1 -e file2 : executing file1 and file2." << endl;
-        } else if ( strcmp(argv[i], "-burst") == 0 ) {
-            if ( !(i + 1 < argc) ) {
-                cout << "Partial usage: nachos [-e execFile] [-burst burstTime]\n";
-            } else {
-                try {
-                    burstTimes[execfileNum] = atoi(argv[i + 1]);
-                } catch ( ... ) {
-                    cout << "Error: burst time should be a number." << endl;
-                    Exit(1);
-                }
-            }
-        } else if ( strcmp(argv[i], "-arriv") == 0 ) {
-            if ( !(i + 1 < argc) ) {
-                cout << "Partial usage: nachos [-e execFile] [-arriv arriveTime]\n";
-            } else {
-                try {
-                    arriveTime[execfileNum] = atoi(argv[i + 1]);
-                } catch ( ... ) {
-                    cout << "Error: arrive time should be a number." << endl;
-                    Exit(1);
-                }
-            }
-        } else if ( strcmp(argv[i], "-prio") == 0 ) {
-            if ( !(i + 1 < argc) ) {
-                cout << "Partial usage: nachos [-e execFile] [-prio priority]\n";
-            } else {
-                try {
-                    priority[execfileNum] = atoi(argv[i + 1]);
-                } catch ( ... ) {
-                    cout << "Error: priority should be a number." << endl;
-                    Exit(1);
-                }
-            }
         }
     }
 }
@@ -115,19 +80,8 @@ void UserProgKernel::Run() {
     cout << "Total threads number is " << execfileNum << endl;
     for ( int n = 1; n <= execfileNum; n++ ) {
         t[n] = new Thread(execfile[n]);
-
-        // Set burst time for each thread
-        t[n]->setBurstTime(burstTimes[n]);
-
-        // Set priority for each thread
-        t[n]->setPriority(priority[n]);
-
         t[n]->space = new AddrSpace();
         t[n]->Fork((VoidFunctionPtr)&ForkExecute, (void *)t[n]);
-        // Sleep for SRTF
-        if ( kernel->scheduler->getSchedulerType() == SRTF ) {
-            kernel->alarm->sleeper.napTime(t[n], arriveTime[n]);
-        }
         cout << "Thread " << execfile[n] << " is executing." << endl;
     }
     //	Thread *t1 = new Thread(execfile[1]);

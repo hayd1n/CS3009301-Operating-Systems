@@ -20,7 +20,6 @@
 // of liability and disclaimer of warranty provisions.
 
 #include "copyright.h"
-#include "stats.h"
 #include "timer.h"
 #include "main.h"
 #include "sysdep.h"
@@ -66,10 +65,10 @@ void Timer::CallBack() {
 
 void Timer::SetInterrupt() {
     if ( !disable ) {
-        int delay = timerTicksVar;
+        int delay = TimerTicks;
 
         if ( randomize ) {
-            delay = 1 + (RandomNumber() % (timerTicksVar * 2));
+            delay = 1 + (RandomNumber() % (TimerTicks * 2));
         }
         // schedule the next timer device interrupt
         kernel->interrupt->Schedule(this, delay, TimerInt);

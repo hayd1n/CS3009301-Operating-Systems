@@ -17,7 +17,6 @@
 // of liability and disclaimer of warranty provisions.
 
 #include "copyright.h"
-#include "main.h"
 #include "thread.h"
 #include "switch.h"
 #include "synch.h"
@@ -99,13 +98,8 @@ void Thread::Fork(VoidFunctionPtr func, void *arg) {
     StackAllocate(func, arg);
 
     oldLevel = interrupt->SetLevel(IntOff);
-
-    // Because it doesn't always run when it's forked.
-    if ( scheduler->getSchedulerType() != SRTF ) {
-        scheduler->ReadyToRun(this);  // ReadyToRun assumes that interrupts
-                                      // are disabled!
-    }
-
+    scheduler->ReadyToRun(this);  // ReadyToRun assumes that interrupts
+                                  // are disabled!
     (void)interrupt->SetLevel(oldLevel);
 }
 
@@ -206,21 +200,8 @@ void Thread::Yield() {
 
     nextThread = kernel->scheduler->FindNextToRun();
     if ( nextThread != NULL ) {
-        // Because it's preemtive, each yield has to determine whether it will be interrupted or
-        // not.
-        // It's possible that it won't be interrupted, so you can't just throw nextThread into
-        // ReadyToRun like other scheduling methods.
-        if ( kernel->scheduler->getSchedulerType() == SRTF ) {
-            if ( nextThread->getBurstTime() < this->getBurstTime() ) {
-                kernel->scheduler->ReadyToRun(this);
-                kernel->scheduler->Run(nextThread, FALSE);
-            } else {
-                kernel->scheduler->ReadyToRun(nextThread);
-            }
-        } else {
-            kernel->scheduler->ReadyToRun(this);
-            kernel->scheduler->Run(nextThread, FALSE);
-        }
+        kernel->scheduler->ReadyToRun(this);
+        kernel->scheduler->Run(nextThread, FALSE);
     }
     (void)kernel->interrupt->SetLevel(oldLevel);
 }
@@ -408,11 +389,7 @@ static void SimpleThread() {
     while ( thread->getBurstTime() > 0 ) {
         thread->setBurstTime(thread->getBurstTime() - 1);
         printf("%s: %d\n", kernel->currentThread->getName(), kernel->currentThread->getBurstTime());
-
-        if ( kernel->scheduler->getSchedulerType() == SRTF && kernel->alarm->sleeper.wakeUp() ) {
-            kernel->currentThread->Yield();
-        }
-
+        // kernel->currentThread->Yield();
         kernel->interrupt->OneTick();
     }
 }
@@ -430,7 +407,6 @@ void Thread::SelfTest() {
     char *name[number] = {"A", "B", "C"};
     int burst[number] = {3, 10, 4};
     int priority[number] = {4, 5, 3};
-    int arrive[number] = {3, 0, 5};
 
     Thread *t;
     for ( int i = 0; i < number; i++ ) {
@@ -438,10 +414,6 @@ void Thread::SelfTest() {
         t->setPriority(priority[i]);
         t->setBurstTime(burst[i]);
         t->Fork((VoidFunctionPtr)SimpleThread, (void *)NULL);
-        // If it's SRTF, it has to sleep.
-        if ( kernel->scheduler->getSchedulerType() == SRTF ) {
-            kernel->alarm->sleeper.napTime(t, arrive[i]);
-        }
     }
     kernel->currentThread->Yield();
 }

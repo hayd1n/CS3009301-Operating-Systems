@@ -20,58 +20,8 @@
 
 #include "copyright.h"
 #include "debug.h"
-#include "list.h"
 #include "scheduler.h"
 #include "main.h"
-
-//----------------------------------------------------------------------
-// Sleeper::Sleeper
-//----------------------------------------------------------------------
-
-bool Sleeper::isEmpty() { return tList.size() == 0; }
-
-void Sleeper::napTime(Thread *t, int x) {
-    // Save the current interrupt status
-    IntStatus oldLevel = kernel->interrupt->SetLevel(IntOff);
-
-    ASSERT(kernel->interrupt->getLevel() == IntOff);
-    DEBUG(dbgThread, "Putting thread to sleep: " << t->getName() << " for " << x);
-    tList.push_back(SleepT(t, currentINT + x));
-    if ( kernel->scheduler->getSchedulerType() != SRTF ) {
-        t->Sleep(false);
-    }
-
-    // Restore the interrupt status
-    kernel->interrupt->SetLevel(oldLevel);
-}
-
-bool Sleeper::wakeUp() {
-    // Save the current interrupt status
-    IntStatus oldLevel = kernel->interrupt->SetLevel(IntOff);
-
-    bool woken = false;
-    currentINT++;
-
-    for ( std::list<SleepT>::iterator it = tList.begin(); it != tList.end(); ) {
-        if ( currentINT >= it->when ) {
-            it->thread->setStatus(READY);
-            kernel->scheduler->ReadyToRun(it->thread);
-            it = tList.erase(it);
-            woken = true;
-        } else {
-            it++;
-        }
-    }
-
-    if ( woken ) {
-        DEBUG(dbgThread, "Woken up threads");
-    }
-
-    // Restore the interrupt status
-    kernel->interrupt->SetLevel(oldLevel);
-
-    return woken;
-}
 
 //----------------------------------------------------------------------
 // Compare function
@@ -80,20 +30,6 @@ int PriorityCompare(Thread *a, Thread *b) {
     if ( a->getPriority() == b->getPriority() )
         return 0;
     return a->getPriority() > b->getPriority() ? 1 : -1;
-}
-
-//----------------------------------------------------------------------
-// FIFO Compare function
-//----------------------------------------------------------------------
-int FIFOCompare(Thread *a, Thread *b) { return 1; }
-
-//----------------------------------------------------------------------
-// SJF Compare function
-//----------------------------------------------------------------------
-int SJFCompare(Thread *a, Thread *b) {
-    if ( a->getBurstTime() == b->getBurstTime() )
-        return 0;
-    return a->getBurstTime() > b->getBurstTime() ? 1 : -1;
 }
 
 //----------------------------------------------------------------------
@@ -111,14 +47,13 @@ Scheduler::Scheduler(SchedulerType type) {
         readyList = new List<Thread *>;
         break;
     case SJF:
-    case SRTF:
-        readyList = new SortedList<Thread *>(SJFCompare);
+        /* todo */
         break;
     case Priority:
         readyList = new SortedList<Thread *>(PriorityCompare);
         break;
     case FIFO:
-        readyList = new SortedList<Thread *>(FIFOCompare);
+        /* todo */
         break;
     }
     toBeDestroyed = NULL;
@@ -186,7 +121,7 @@ void Scheduler::Run(Thread *nextThread, bool finishing) {
     Thread *oldThread = kernel->currentThread;
 
     //	cout << "Current Thread" <<oldThread->getName() << "    Next
-    // Thread"<<nextThread->getName()<<endl;
+    //Thread"<<nextThread->getName()<<endl;
 
     ASSERT(kernel->interrupt->getLevel() == IntOff);
 

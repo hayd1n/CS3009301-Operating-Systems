@@ -42,9 +42,6 @@ private:
     Thread *t[10];
     char *execfile[10];
     int execfileNum;
-    int burstTimes[10];
-    int priority[10];
-    int arriveTime[10];
 };
 
 #endif  // USERKERNEL_H

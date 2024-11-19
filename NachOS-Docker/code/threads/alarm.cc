@@ -11,7 +11,6 @@
 #include "copyright.h"
 #include "alarm.h"
 #include "main.h"
-#include "scheduler.h"
 
 //----------------------------------------------------------------------
 // Alarm::Alarm
@@ -49,17 +48,13 @@ void Alarm::CallBack() {
     MachineStatus status = interrupt->getStatus();
 
     kernel->currentThread->setPriority(kernel->currentThread->getPriority() - 1);
-
-    // this line is add for systemcall sleep
-    bool woken = sleeper.wakeUp();
-
-    if ( status == IdleMode && !woken && sleeper.isEmpty() ) {  // is it time to quit?
+    if ( status == IdleMode ) {  // is it time to quit?
         if ( !interrupt->AnyFutureInterrupts() ) {
             timer->Disable();  // turn off the timer
         }
     } else {  // there's someone to preempt
         if ( kernel->scheduler->getSchedulerType() == RR ||
-             kernel->scheduler->getSchedulerType() == SRTF ) {
+             kernel->scheduler->getSchedulerType() == Priority ) {
             interrupt->YieldOnReturn();
         }
     }
