@@ -20,6 +20,7 @@
 UserProgKernel::UserProgKernel(int argc, char **argv) : ThreadedKernel(argc, argv) {
     debugUserProg = FALSE;
     execfileNum = 0;
+    pageReplacementType = PageReplacementType::FIFO;
     for ( int i = 1; i < argc; i++ ) {
         if ( strcmp(argv[i], "-s") == 0 ) {
             debugUserProg = TRUE;
@@ -37,6 +38,10 @@ UserProgKernel::UserProgKernel(int argc, char **argv) : ThreadedKernel(argc, arg
             cout << "For example:" << endl;
             cout << "	./nachos -s : Print machine status during the machine is on." << endl;
             cout << "	./nachos -e file1 -e file2 : executing file1 and file2." << endl;
+        } else if ( strcmp(argv[i], "-FIFO") == 0 ) {
+            pageReplacementType = PageReplacementType::FIFO;
+        } else if ( strcmp(argv[i], "-LRU") == 0 ) {
+            pageReplacementType = PageReplacementType::LRU;
         }
     }
 }
@@ -51,6 +56,7 @@ void UserProgKernel::Initialize() {
 
     machine = new Machine(debugUserProg);
     fileSystem = new FileSystem();
+    virtualMemoryDisk = new SynchDisk("vm_disk");
 #ifdef FILESYS
     synchDisk = new SynchDisk("New SynchDisk");
 #endif  // FILESYS

@@ -38,8 +38,10 @@ public:
                                 // to modify the contents of the page.
     bool use;                   // This bit is set by the hardware every time the
                                 // page is referenced or modified.
-    bool dirty;                 // This bit is set by the hardware every time the
-                                // page is modified.
+    bool dirty;                 // This bit is set by the hardware every time the page is modified.
+
+    int count;  // counter for LRU
+    int id;
 };
 
 #endif

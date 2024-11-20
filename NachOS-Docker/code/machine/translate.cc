@@ -30,6 +30,7 @@
 // of liability and disclaimer of warranty provisions.
 
 #include "copyright.h"
+#include "machine.h"
 #include "main.h"
 
 // Routines for converting Words and Short Words to and from the
@@ -201,7 +202,70 @@ ExceptionType Machine::Translate(int virtAddr, int *physAddr, int size, bool wri
             DEBUG(dbgAddr, "Illegal virtual page # " << virtAddr);
             return AddressErrorException;
         } else if ( !pageTable[vpn].valid ) {
-            /* 		Add Page fault code here		*/
+            // Page fault
+            printf("page fault\n");
+
+            kernel->stats->numPageFaults++;
+
+            totalCount += 1;
+            int available = kernel->machine->findUnusedPhysPage();
+
+            if ( available != -1 ) {
+                char buffer[PageSize];
+                kernel->machine->usedPhysPage[available] = true;
+                kernel->machine->phyPageId[available] = pageTable[vpn].id;
+
+                kernel->machine->mainTab[available] = &pageTable[vpn];
+                pageTable[vpn].physicalPage = available;
+                pageTable[vpn].valid = true;
+                pageTable[vpn].count = totalCount;  // for LRU
+
+                kernel->virtualMemoryDisk->ReadSector(pageTable[vpn].virtualPage, buffer);
+                bcopy(buffer, &mainMemory[available * PageSize], PageSize);
+            } else {
+                char buffer1[PageSize];
+                char buffer2[PageSize];
+
+                int victim;
+
+                // FIFO
+                if ( kernel->pageReplacementType == PageReplacementType::FIFO ) {
+                    victim = fifoCount % NumPhysPages;
+                }
+
+                // LRU
+                if ( kernel->pageReplacementType == PageReplacementType::LRU ) {
+                    int min = pageTable[0].count;
+                    victim = 0;
+                    for ( int i = 0; i < NumPhysPages; i++ ) {
+                        // printf("pageTable[%d].count: %d\n", i, pageTable[i].count);
+                        if ( min > pageTable[i].count ) {
+                            min = pageTable[i].count;
+                            victim = i;
+                        }
+                    }
+                    totalCount += 1;
+                    pageTable[victim].count = totalCount;
+                }
+
+                printf("page %d swapped\n", victim);
+
+                // Write the contents to disk
+                bcopy(&mainMemory[victim * PageSize], buffer1, PageSize);
+                kernel->virtualMemoryDisk->ReadSector(pageTable[vpn].virtualPage, buffer2);
+                bcopy(buffer2, &mainMemory[victim * PageSize], PageSize);
+                kernel->virtualMemoryDisk->WriteSector(pageTable[vpn].virtualPage, buffer1);
+
+                mainTab[victim]->virtualPage = pageTable[vpn].virtualPage;
+                mainTab[victim]->valid = false;
+
+                // Load contents into main memory
+                pageTable[vpn].valid = true;
+                pageTable[vpn].physicalPage = victim;
+                kernel->machine->phyPageId[victim] = pageTable[vpn].id;
+                mainTab[victim] = &pageTable[vpn];
+                fifoCount += 1;
+            }
         }
         entry = &pageTable[vpn];
     } else {

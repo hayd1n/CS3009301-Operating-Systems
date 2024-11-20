@@ -40,3 +40,6 @@ test3
 
 # NachOS binary
 code/*/nachos
+
+# Virtual memory
+code/vm_disk

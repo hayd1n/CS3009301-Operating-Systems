@@ -195,3 +195,22 @@ void Machine::WriteRegister(int num, int value) {
     ASSERT((num >= 0) && (num < NumTotalRegs));
     registers[num] = value;
 }
+
+int Machine::fifoCount = 0;
+int Machine::totalCount = 0;
+
+int Machine::findUnusedPhysPage() {
+    for ( int i = 0; i < NumPhysPages; i++ ) {
+        if ( usedPhysPage[i] == false )
+            return i;
+    }
+    return -1;
+}
+
+int Machine::findUnusedVirtPage() {
+    for ( int i = 0; i < NumVirtPages; i++ ) {
+        if ( usedVirtPage[i] == false )
+            return i;
+    }
+    return -1;
+}

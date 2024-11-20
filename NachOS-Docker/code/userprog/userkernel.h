@@ -16,7 +16,11 @@
 #include "filesys.h"
 #include "machine.h"
 #include "synchdisk.h"
+
+enum class PageReplacementType { FIFO, LRU };
+
 class SynchDisk;
+
 class UserProgKernel : public ThreadedKernel {
 public:
     UserProgKernel(int argc, char **argv);
@@ -32,6 +36,9 @@ public:
     // These are public for notational convenience.
     Machine *machine;
     FileSystem *fileSystem;
+    SynchDisk *virtualMemoryDisk;
+
+    PageReplacementType pageReplacementType;
 
 #ifdef FILESYS
     SynchDisk *synchDisk;

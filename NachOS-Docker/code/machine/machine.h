@@ -31,6 +31,7 @@ const unsigned int PageSize = 128;  // set the page size equal to
                                     // the disk sector size, for simplicity
 
 const unsigned int NumPhysPages = 32;
+const unsigned int NumVirtPages = NumPhysPages;
 const int MemorySize = (NumPhysPages * PageSize);
 const int TLBSize = 4;  // if there is a TLB, make it small
 
@@ -90,7 +91,7 @@ class Machine {
 public:
     Machine(bool debug);  // Initialize the simulation of the hardware
                           // for running user programs
-    ~Machine();  // De-allocate the data structures
+    ~Machine();           // De-allocate the data structures
 
     // Routines callable by the Nachos kernel
     void Run();  // Run a user program
@@ -134,6 +135,24 @@ public:
     unsigned int pageTableSize;
     bool ReadMem(int addr, int size, int *value);
 
+    int idNum;
+    bool usedPhysPage[NumPhysPages];  // record that the physical memory has been used
+    bool usedVirtPage[NumVirtPages];  // record that virtual memory has been used
+    int phyPageId[NumPhysPages];
+    int count[NumPhysPages];  // counter for LRU
+
+    TranslationEntry *mainTab[NumPhysPages];
+    static int fifoCount;
+    static int totalCount;
+
+    // Find a physical page that is not used
+    // -1: no available physical page
+    int findUnusedPhysPage();
+
+    // Find a virtual page that is not used
+    // -1: no available virtual page
+    int findUnusedVirtPage();
+
 private:
     // Routines internal to the machine simulation -- DO NOT call these directly
     void DelayedLoad(int nextReg, int nextVal);
@@ -166,8 +185,8 @@ private:
 
     int registers[NumTotalRegs];  // CPU registers, for executing user programs
 
-    bool singleStep;  // drop back into the debugger after each
-                      // simulated instruction
+    bool singleStep;   // drop back into the debugger after each
+                       // simulated instruction
     int runUntilTime;  // drop back into the debugger when simulated
                        // time reaches this value
 
