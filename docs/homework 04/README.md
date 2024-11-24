@@ -3,8 +3,8 @@
 > NTUST Course Project  
 > Course No: `CS3009301`  
 > Course Name: Operating Systems  
-> Author: Hayden Chang 張皓鈞 B11030202 , Allen Cheng 鄭健廷 B11130225, LuYee 呂學易 B11130233
-> Email: B11030202@mail.ntust.edu.tw [B11130225@mail.ntust.edu.tw](mailto:B11130225@mail.ntust.edu.tw) [B11130233@mail.ntust.edu.tw](mailto:B11130233@mail.ntust.edu.tw)
+> Author: Hayden Chang 張皓鈞 B11030202, Allen Cheng 鄭健廷 B11130225, LuYee 呂學易 B11130233
+> Email: [B11030202@mail.ntust.edu.tw](mailto:B11030202@mail.ntust.edu.tw), [B11130225@mail.ntust.edu.tw](mailto:B11130225@mail.ntust.edu.tw), [B11130233@mail.ntust.edu.tw](mailto:B11130233@mail.ntust.edu.tw)
 
 ## Description
 
@@ -81,10 +81,10 @@ make
 
 ## Goals
 
-- [x]  📑[Implement virtual memory capable of handling page faults](#Implement virtual memory capable of handling page faults)
-- [x]  📑[Implement the Page Replacement Algorithm: FIFO and LRU](#Implement the Page Replacement Algorithm: FIFO and LRU)
-	- [x]  📃[First in First out Page Replacement(FIFO)](#First in First out Page Replacement(FIFO))
-	- [x]  📃[First in First out Page Replacement(FIFO)](#First in First out Page Replacement(FIFO))
+- [x] 📑 [Implement virtual memory capable of handling page faults](#implement-virtual-memory-capable-of-handling-page-faults)
+- [x] 📑 [Implement the page replacement algorithm](#implement-the-page-replacement-algorithm)
+  - [x] 📃 First in First out Page Replacement (FIFO)
+  - [x] 📃 Least Recently Used Page Replacement (LRU)
 
 ## Implement virtual memory capable of handling page faults
 
@@ -98,7 +98,7 @@ Verify the results using a test program. Declare a sufficiently large int array 
 
 Using SynchDisk as secondary memory.
 
-Add pageReplacementType for switching LRU and FIFO.
+Add `pageReplacementType` for switching LRU and FIFO.
 
 ```c++
 // userkernel.h
@@ -189,7 +189,7 @@ void UserProgKernel::Initialize() {
 
 #### machine/machine.h & machine/machine.cc
 
-Add Variable that will be use. And implement find unused PhysPage and virtPage.
+Add variable that will be use. And implement functions to find unused physical page and virtual page.
 
 ```c++
 // machine.h
@@ -391,10 +391,10 @@ void AddrSpace::SaveState() {
 }
 ```
 
-## Implement the Page Replacement Algorithm: FIFO and LRU
+## Implement the page replacement algorithm
 
- First in First out Page Replacement (FIFO)
-Least Recently Used Page Replacement (LRU)
+- First in First out Page Replacement (FIFO)
+- Least Recently Used Page Replacement (LRU)
 
 ### Modified Files
 
@@ -549,7 +549,7 @@ Run the following command.
 ./userprog/nachos -e ./test/test1 -e ./test/test1 -e ./test/test1 -e ./test/test1 -FIFO
 ````
 
-![截圖 2024-11-23 17.23.07](/Users/chengchienting/GitHub/CS3009301-Operating-Systems/docs/homework 04/assets/截圖 2024-11-23 17.23.07.png)
+![2024-11-23 17.23.07](./assets/2024-11-23 17.23.07.png)
 
 ### LRU
 
@@ -559,7 +559,7 @@ Run the following command.
 ./userprog/nachos -e ./test/test1 -e ./test/test1 -e ./test/test1 -e ./test/test1 -LRU
 ```
 
-![截圖 2024-11-23 17.23.24](/Users/chengchienting/GitHub/CS3009301-Operating-Systems/docs/homework 04/assets/截圖 2024-11-23 17.23.24.png)
+![2024-11-23 17.23.24](./assets/2024-11-23 17.23.24.png)
 
 ## Contribution
 
