@@ -563,8 +563,6 @@ Run the following command.
 
 ## Contribution
 
-Hayden Chang 張皓鈞 B11030202: 40%
-
-Allen Cheng 鄭健廷 B11130225: 30%
-
-ShitYeeeLue 呂學易 B11130233: 30%
+- Hayden Chang 張皓鈞 B11030202: 40%
+- Allen Cheng 鄭健廷 B11130225: 30%
+- LuYee 呂學易 B11130233: 30%
