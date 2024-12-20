@@ -1,0 +1,29 @@
+# Ignore all object files (.o)
+*.o
+
+# Ignore all command tracking files generated during compilation
+*.cmd
+
+# Ignore kernel module-related files
+*.ko
+*.mod
+*.mod.c
+modules.order
+.Module.symvers.cmd
+Module.symvers
+
+# Ignore application and utility executables
+myioctl_app
+myioctl_reset
+ioctl_eject
+main
+
+# Ignore compilation-related JSON files (e.g., Clang compilation database)
+compile_commands.json
+
+# Ignore cache directories
+.cache/
+
+# Ignore editor and temporary files
+*~
+*.tmp
