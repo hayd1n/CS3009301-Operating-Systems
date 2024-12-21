@@ -79,7 +79,7 @@ sudo umount /dev/cdrom
 
 ### Test Result
 
-![Lab1 Test Result](./assets/Lab1 Test Result.png)
+![Lab1 Test Result](./assets/Lab1TestResult.png)
 
 ## Lab2(With EXT)
 
@@ -367,7 +367,7 @@ Reset counter value: 0
 
 ### Test Result
 
-![Lab2 Test Result](./assets/Lab2 Test Result.png)
+![Lab2 Test Result](./assets/Lab2TestResult.png)
 
 ## Contribution
 
