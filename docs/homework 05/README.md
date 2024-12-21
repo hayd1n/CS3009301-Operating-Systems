@@ -1,10 +1,10 @@
-# Homework 04
+# Homework 05
 
 > NTUST Course Project  
 > Course No: `CS3009301`  
 > Course Name: Operating Systems  
-> Author: Hayden Chang 張皓鈞 B11030202, Allen Cheng 鄭健廷 B11130225, LuYee 呂學易 B11130233
-> Email: [B11030202@mail.ntust.edu.tw](mailto:B11030202@mail.ntust.edu.tw), [B11130225@mail.ntust.edu.tw](mailto:B11130225@mail.ntust.edu.tw), [B11130233@mail.ntust.edu.tw](mailto:B11130233@mail.ntust.edu.tw)
+> Author: Hayden Chang 張皓鈞 B11030202, Allen Cheng 鄭健廷 B11130225, LuYee 呂學易 B11130233  
+> Email: [B11030202@mail.ntust.edu.tw](mailto:B11030202@mail.ntust.edu.tw),  [B11130225@mail.ntust.edu.tw](mailto:B11130225@mail.ntust.edu.tw),  [B11130233@mail.ntust.edu.tw](mailto:B11130233@mail.ntust.edu.tw)
 
 ## Goals
 
@@ -79,7 +79,7 @@ sudo umount /dev/cdrom
 
 ### Test Result
 
-![截圖 2024-12-22 02.17.50](/Users/chengchienting/GitHub/CS3009301-Operating-Systems/docs/homework 05/assets/截圖 2024-12-22 02.17.50.png)
+![Lab1 Test Result](./assets/Lab1 Test Result.png)
 
 ## Lab2(With EXT)
 
@@ -158,7 +158,6 @@ static int myioctl_release(struct inode *inode, struct file *filp) {
 }
 
 // IOCTL function
-
 static long myioctl_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
     int err = 0;
     int tmp;
@@ -368,7 +367,7 @@ Reset counter value: 0
 
 ### Test Result
 
-![截圖 2024-12-22 02.32.40](/Users/chengchienting/GitHub/CS3009301-Operating-Systems/docs/homework 05/assets/截圖 2024-12-22 02.32.40.png)
+![Lab2 Test Result](./assets/Lab2 Test Result.png)
 
 ## Contribution
 
