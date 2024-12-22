@@ -11,7 +11,7 @@
 - [x] 💿 Ejecing CD-ROM via IOCTL
 - [x] 🚗 Linux Kernel Driver
 - [x] 🏎️ Linux Kernel Driver (EXT) - Reset Counter Value
-- [ ] 🔥 Bonus: IOCTL Related Project
+- [x] 🔥 Bonus: IOCTL Related Project
 
 ## Lab1
 
@@ -700,6 +700,6 @@ sudo chmod 666 /dev/myioctl
 
 ## Contribution
 
-- Hayden Chang 張皓鈞 B11030202: 40%
-- Allen Cheng 鄭健廷 B11130225: 30%
+- Hayden Chang 張皓鈞 B11030202: 35%
+- Allen Cheng 鄭健廷 B11130225: 35%
 - LuYee 呂學易 B11130233: 30%
